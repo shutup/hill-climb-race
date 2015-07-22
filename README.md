@@ -1,6 +1,6 @@
 # hill-climb-race
 with the help of cocos2dx ,i will try to reproduce the funny game hill climb racing in a simple way.
-/Users/shutup/Desktop/iOS Simulator Screen Shot 2015年7月22日 12.31.18.png
+[!screen capture](https://raw.githubusercontent.com/shutup/hill-climb-race/master/hillClambRacing/Resources/screenCapture.png)
 requirements:
 1. cocos2d-x v3.6
 
