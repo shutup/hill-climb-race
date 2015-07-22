@@ -1,13 +1,13 @@
 //
 //  Constant.h
-//  MyTestGame
+//  hillClimbRacing
 //
 //  Created by shutup on 15-7-11.
 //
 //
 
-#ifndef MyTestGame_Constant_h
-#define MyTestGame_Constant_h
+#ifndef HillClimbRacing_Constant_h
+#define HillClimbRacing_Constant_h
 
 #define CAR_BODY_IMG "car-monster.png"
 #define CAR_TIRE_IMG "car-monster-tire.png"

@@ -6,8 +6,8 @@
 //
 //
 
-#ifndef __HillClambRacing__TerrainTest__
-#define __HillClambRacing__TerrainTest__
+#ifndef __HillClimbRacing__TerrainTest__
+#define __HillClimbRacing__TerrainTest__
 
 #include "cocos2d.h"
 
