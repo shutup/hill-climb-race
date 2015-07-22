@@ -1,18 +1,18 @@
 //
-//  TextureTestScene.h
+//  GameScene.h
 //  MyTestGame
 //
 //  Created by shutup on 15-7-15.
 //
 //
 
-#ifndef __MyTestGame__TextureTestScene__
-#define __MyTestGame__TextureTestScene__
+#ifndef __HillCliambRacing__GameScene__
+#define __HillCliambRacing__GameScene__
 
 #include "cocos2d.h"
 #include "TerrainTest.h"
 
-class TextureTestScene : public cocos2d::Layer
+class GameScene : public cocos2d::Layer
 {
 public:
     // there's no 'id' in cpp, so we recommend returning the class instance pointer
@@ -21,7 +21,7 @@ public:
     // Here's a difference. Method 'init' in cocos2d-x returns bool, instead of returning 'id' in cocos2d-iphone
     virtual bool init();
     // implement the "static create()" method manually
-    CREATE_FUNC(TextureTestScene);
+    CREATE_FUNC(GameScene);
     virtual void onEnter();
     //单色渐变
     cocos2d::Sprite *spriteWithColor(cocos2d::Color4F bgColor, float textureWidth, float textureHeight);
@@ -35,8 +35,8 @@ public:
     //触屏事件
     bool touchFunc(cocos2d::Touch *pTouches, cocos2d::Event *pEvent);
     virtual void update(float dt);
-    TextureTestScene();
-    virtual ~TextureTestScene();
+    GameScene();
+    virtual ~GameScene();
    
     //绘制条纹的回调
     void drawStripes(cocos2d::Color4F c2, float textureWidth, float textureHeight, int nStripes);

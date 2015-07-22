@@ -1,25 +1,25 @@
 //
-//  TextureTestScene.cpp
+//  GameScene.cpp
 //  MyTestGame
 //
 //  Created by shutup on 15-7-15.
 //
 //
 
-#include "TextureTestScene.h"
+#include "GameScene.h"
 #include "Constant.h"
 USING_NS_CC;
-TextureTestScene::TextureTestScene() {
+GameScene::GameScene() {
     // TODO Auto-generated constructor stub
     _background = nullptr;
 }
 
-TextureTestScene::~TextureTestScene() {
+GameScene::~GameScene() {
     // TODO Auto-generated destructor stub
 }
 
 
-bool TextureTestScene::init() {
+bool GameScene::init() {
     if ( !Layer::init() )
     {
         return false;
@@ -29,17 +29,17 @@ bool TextureTestScene::init() {
     return true;
 }
 
-Scene* TextureTestScene::createScene() {
+Scene* GameScene::createScene() {
     auto scene = Scene::createWithPhysics();
     scene->getPhysicsWorld()->setDebugDrawMask(PhysicsWorld::DEBUGDRAW_ALL);
-    auto layer= TextureTestScene::create();
+    auto layer= GameScene::create();
     
     scene->addChild(layer);
 
     return scene;
 }
 
-void TextureTestScene::onEnter()
+void GameScene::onEnter()
 {
     
     Layer::onEnter();
@@ -52,7 +52,7 @@ void TextureTestScene::onEnter()
     
     auto listener1 = EventListenerTouchOneByOne::create();
     listener1->setSwallowTouches(true);
-    listener1->onTouchBegan = CC_CALLBACK_2(TextureTestScene::touchFunc, this);
+    listener1->onTouchBegan = CC_CALLBACK_2(GameScene::touchFunc, this);
     listener1->onTouchEnded = [](Touch *pTouches, Event *pEvent){
         
     };
@@ -61,7 +61,7 @@ void TextureTestScene::onEnter()
     //    this->scheduleUpdate();
 }
 
-void TextureTestScene::update(float dt)
+void GameScene::update(float dt)
 {
     float PIXELS_PER_SECOND = 100;
     static float offset = 0;
@@ -107,7 +107,7 @@ void TextureTestScene::update(float dt)
 //    return true;
 //}
 
-bool TextureTestScene::touchFunc(Touch *pTouches, Event *pEvent)
+bool GameScene::touchFunc(Touch *pTouches, Event *pEvent)
 {
 //    this->genBackground();
     Vec2 location = pTouches->getLocation();
@@ -140,7 +140,7 @@ bool TextureTestScene::touchFunc(Touch *pTouches, Event *pEvent)
     }
     return true;
 }
-void TextureTestScene::addCar(Vec2 p)
+void GameScene::addCar(Vec2 p)
 {
     Size visibleSize = Director::getInstance()->getVisibleSize();
     Vec2 origin = Director::getInstance()->getVisibleOrigin();
@@ -220,7 +220,7 @@ void TextureTestScene::addCar(Vec2 p)
     world->addJoint(jointCBSpring);
     world->addJoint(jointABDistance);
 }
-Color4F TextureTestScene::randombrightColor()
+Color4F GameScene::randombrightColor()
 {
     while(true)
     {
@@ -234,7 +234,7 @@ Color4F TextureTestScene::randombrightColor()
     return Color4F();
 }
 
-void TextureTestScene::genBackground()
+void GameScene::genBackground()
 {
     if (_background)
     {
@@ -282,14 +282,14 @@ void TextureTestScene::genBackground()
     _terrain->setStripes(stripes);
 }
 
-Sprite* TextureTestScene::spriteWithColor(Color4F bgColor,float textureWidth,float textureHeight) {
+Sprite* GameScene::spriteWithColor(Color4F bgColor,float textureWidth,float textureHeight) {
     
     RenderTexture* rt = RenderTexture::create(textureWidth,textureHeight);
     rt->beginWithClear(bgColor.r,bgColor.g,bgColor.b,bgColor.a);
     //draw the gradient
     
     _customCommand1.init(_globalZOrder);
-    _customCommand1.func = CC_CALLBACK_0(TextureTestScene::drawGridient, this,textureWidth,textureHeight);
+    _customCommand1.func = CC_CALLBACK_0(GameScene::drawGridient, this,textureWidth,textureHeight);
     auto renderer = Director::getInstance()->getRenderer();
     renderer->addCommand(&_customCommand1);
     
@@ -308,7 +308,7 @@ Sprite* TextureTestScene::spriteWithColor(Color4F bgColor,float textureWidth,flo
 //    renderer->render();
     return Sprite::createWithTexture(rt->getSprite()->getTexture());
 }
-Sprite * TextureTestScene::spriteWithColor1AndColor2(Color4F c1, Color4F c2, float textureWidth, float textureHeight, int nStripes)
+Sprite * GameScene::spriteWithColor1AndColor2(Color4F c1, Color4F c2, float textureWidth, float textureHeight, int nStripes)
 {
     // 1: Create new RenderTexture
     RenderTexture *rt = RenderTexture::create(textureWidth, textureHeight);
@@ -319,7 +319,7 @@ Sprite * TextureTestScene::spriteWithColor1AndColor2(Color4F c1, Color4F c2, flo
     // 3: Draw into the texture
     
     _customCommand.init(_globalZOrder);
-    _customCommand.func = CC_CALLBACK_0(TextureTestScene::drawStripes, this,c2,textureWidth,textureHeight,nStripes);
+    _customCommand.func = CC_CALLBACK_0(GameScene::drawStripes, this,c2,textureWidth,textureHeight,nStripes);
     auto renderer = Director::getInstance()->getRenderer();
     renderer->addCommand(&_customCommand);
     // Layer 4: Noise
@@ -336,7 +336,7 @@ Sprite * TextureTestScene::spriteWithColor1AndColor2(Color4F c1, Color4F c2, flo
     return Sprite::createWithTexture(rt->getSprite()->getTexture());
 }
 
-void TextureTestScene::drawStripes(Color4F c2, float textureWidth, float textureHeight, int nStripes)
+void GameScene::drawStripes(Color4F c2, float textureWidth, float textureHeight, int nStripes)
 {
     this->setGLProgram(GLProgramCache::getInstance()->getGLProgram(GLProgram::SHADER_NAME_POSITION_COLOR));
     CC_NODE_DRAW_SETUP();
@@ -415,7 +415,7 @@ void TextureTestScene::drawStripes(Color4F c2, float textureWidth, float texture
     }
 }
 
-void TextureTestScene::drawGridient(float textureWidth, float textureHeight)
+void GameScene::drawGridient(float textureWidth, float textureHeight)
 {
     this->setGLProgram(GLProgramCache::getInstance()->getGLProgram(GLProgram::SHADER_NAME_POSITION_COLOR));
     CC_NODE_DRAW_SETUP();
